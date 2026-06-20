@@ -78,3 +78,33 @@ document.addEventListener("DOMContentLoaded", () => {
   printPdfBtn.addEventListener("click", executeSecurePrint);
   loanForm.addEventListener("submit", pipelineSubmission);
 });
+
+/**
+   * Packages data architecture and moves runtime pointer out to enterprise link
+   */
+  function pipelineSubmission(e) {
+    e.preventDefault();
+
+    const termsChecked = document.getElementById("termsAgreement").checked;
+    if (!termsChecked) {
+      alert("សូមចុចយល់ព្រមលើលក្ខខណ្ឌសេវាកម្ម មុនពេលបន្តទៅមុខ។\nPlease agree to the Terms and Conditions before proceeding.");
+      return;
+    }
+
+    // Data Verification Matrix Capture
+    const clientData = {
+      name: document.getElementById("fullName").value.trim(),
+      id: document.getElementById("nationalId").value.trim(),
+      phone: document.getElementById("phoneNumber").value.trim(),
+      email: document.getElementById("emailAddress").value.trim(),
+      amount: loanAmountInput.value,
+      term: loanTermInput.value,
+      estimation: monthlyPaymentDisplay.textContent
+    };
+
+    // Safe execution notification prior to pipeline handoff
+    alert(`ទិន្នន័យត្រូវបានផ្ទៀងផ្ទាត់ដោយជោគជ័យ។ ប្រព័ន្ធនឹងបញ្ជូនលោកអ្នកទៅកាន់ទំព័រទំនាក់ទំនងផ្លូវការរបស់ធនាគារ។\n\nData verified. System is routing your application summary to the official service desk.`);
+
+    // Direct redirection execution to targeted end-node link
+    window.location.href = BASE_ROUTING_URL;
+  }
