@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loan Application Gateway - HUOKAING THARA BANK</title>
+  
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Kantumruy+Pro:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="shortcut icon" href="bank.jpg" type="image/jpeg" />
+</head>
+<body>
+
+  <div class="loan-container" id="printableArea">
+    <header class="loan-header">
+      <div class="bank-brand">
+        <h1>HUOKAING THARA BANK</h1>
+        <h2>ធនាគារ ហួកាំង ថារ៉ា</h2>
+      </div>
+      <div class="document-tag">CREDIT APPLICATION GATEWAY</div>
+    </header>
+
+    <form id="loanForm" autocomplete="off">
+      
+      <fieldset class="form-section">
+        <legend>១. ព័ត៌មានផ្ទាល់ខ្លួន / Personal Information</legend>
+        
+        <div class="form-grid">
+          <div class="input-group">
+            <label for="fullName">ឈ្មោះពេញ / Full Name</label>
+            <input type="text" id="fullName" required placeholder="e.g., CHAN THARA" />
+          </div>
+          
+          <div class="input-group">
+            <label for="nationalId">អត្តសញ្ញាណប័ណ្ណ ឬ លិខិតឆ្លងដែន / National ID or Passport</label>
+            <input type="text" id="nationalId" required placeholder="e.g., 010234567" />
+          </div>
+
+          <div class="input-group">
+            <label for="phoneNumber">លេខទូរស័ព្ទ / Phone Number</label>
+            <input type="tel" id="phoneNumber" required placeholder="e.g., +855 12 345 678" />
+          </div>
+
+          <div class="input-group">
+            <label for="emailAddress">អ៊ីមែល / Email Address</label>
+            <input type="email" id="emailAddress" required placeholder="name@domain.com" />
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="form-section">
+        <legend>២. ព័ត៌មានឥណទាន / Loan Requirements</legend>
+        
+        <div class="form-grid">
+          <div class="input-group">
+            <label for="loanAmount">ចំនួនទឹកប្រាក់ស្នើសុំ (USD) / Requested Amount</label>
+            <input type="number" id="loanAmount" min="500" step="100" required placeholder="Minimum $500" />
+          </div>
+
+          <div class="input-group">
+            <label for="loanTerm">រយៈពេលខ្ចី (ខែ) / Loan Term (Months)</label>
+            <select id="loanTerm" required>
+              <option value="12">12 Months (1 Year)</option>
+              <option value="24">24 Months (2 Years)</option>
+              <option value="36">36 Months (3 Years)</option>
+              <option value="48">48 Months (4 Years)</option>
+              <option value="60">60 Months (5 Years)</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="loanPurpose">គោលបំណងនៃការប្រើប្រាស់ប្រាក់កម្ចី / Loan Purpose</label>
+            <input type="text" id="loanPurpose" required placeholder="e.g., Business Expansion / Housing" />
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="calculation-matrix">
+        <h3>ការប៉ាន់ប្រមាណឥណទាន / Dynamic Loan Estimation</h3>
+        <div class="calc-row">
+          <span>អត្រាការប្រាក់ប្រចាំឆ្នាំ / Annual Interest Rate:</span>
+          <span class="calc-value" id="interestRateDisplay">8.50%</span>
+        </div>
+        <div class="calc-row highlighted-row">
+          <span>ការបង់ប្រាក់ប្រចាំខែ (ប៉ាន់ស្មាន) / Estimated Monthly Payment:</span>
+          <span class="calc-value" id="monthlyPaymentDisplay">$0.00</span>
+        </div>
+      </div>
+
+      <div class="action-tray">
+        <button type="button" id="printPdfBtn" class="btn btn-secondary">
+          <span>🖨️</span> ទាញយកជា PDF / Print Document
+        </button>
+        <button type="submit" id="submitLoanBtn" class="btn btn-primary">
+          <span>🚀</span> បញ្ជូនទិន្នន័យ និងទាក់ទង / Submit & Connect
+        </button>
+      </div>
+
+    </form>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
